@@ -1,0 +1,20 @@
+name: Deploy on NAS
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:  # Ручной запуск
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Ваш self-hosted runner
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy bot
+      run: |
+        cd ${{ vars.BOT_PATH }}
+        git pull
+        docker compose up -d --build telegram-bot
