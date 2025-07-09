@@ -69,7 +69,5 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 
-bot/config.py
 bot/.env
-.env
 *.session
